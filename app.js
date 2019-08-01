@@ -6,9 +6,10 @@ const session = require('express-session')
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const { ExpressOIDC } = require('@okta/oidc-middleware');
+const axios = require('axios');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var inviteRouter = require('./routes/invite');
 
 const PORT = process.env.PORT || 3000;
 
@@ -61,7 +62,9 @@ const oidc = new ExpressOIDC({
 app.use(oidc.router);
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/invite', inviteRouter);
+
+axios.defaults.headers.common['Authorization'] = `SSWS  `+process.env.API_KEY
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

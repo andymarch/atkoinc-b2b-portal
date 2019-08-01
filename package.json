@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@okta/oidc-middleware": "^2.0.0",
+    "axios": "^0.19.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "dotenv": "^8.0.0",

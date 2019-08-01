@@ -3,7 +3,12 @@
     src="/public/images/atkofavicon.png"/></a>
     <div class="nav-content">
         {{#if user}}
-            Welcome {{user}}
+        <div class="userAddress">Welcome {{user}}</div>
+
+        <a class="nav-action nav-action-focus" href="/invite">
+            <i class="fas fa-paper-plane text-red"></i>
+            Invite user
+        </a>
         {{else}}
         <a class="nav-action nav-action-focus" href="/login">
             <i class="fas fa-key text-red"></i>

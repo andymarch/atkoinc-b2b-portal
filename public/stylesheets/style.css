@@ -72,6 +72,12 @@ body {
   text-decoration: none;
 }
 
+.userAddress{
+  padding: 0.65rem 1.5rem;
+  display: flex;
+  align-items: center;
+  padding-left: 35px;
+}
 .nav-action-focus{
   color: rgba(0, 0, 0, 0.9);
 }
@@ -106,4 +112,38 @@ i {
   align-items: center;
   justify-content: space-between;
   height: 40px;
+}
+
+form {
+  text-align: center;
+}
+
+input {
+  text-align: center;
+  border: 0px;
+  border-bottom: 1px white solid;
+  background: transparent;
+  color: var(--text-color);
+  font-size: x-large;
+  margin-bottom: 20px;
+}
+
+label{
+  color: var(--main-theme-color);
+  font-size: smaller;
+}
+
+.btn-positive {
+  margin: 5px;
+  background-color: white;
+  color: #ad0000;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  line-height: 30px;
+  height: 30;
+  border: 2px solid white;
+  cursor: pointer;
+  text-transform: uppercase !important;
 }
