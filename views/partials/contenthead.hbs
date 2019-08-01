@@ -1,3 +1,27 @@
-<div id="contentHead">
-    <div class="page-title">{{title}}</div>
-</div>
+      <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+        <div class="container-fluid">
+          <!-- Brand -->
+          <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="./index.html">Dashboard</a>
+          <!-- User -->
+          <ul class="navbar-nav align-items-center d-none d-md-flex">
+            <li class="nav-item dropdown">
+              <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="media align-items-center">
+                  <span class="avatar avatar-sm rounded-circle">
+                    <span class="ni ni-single-02 text-white"></span>
+                  </span>
+                  <div class="media-body ml-2 d-lg-block">
+                    <span id="lbl_displayName" class="font-weight-bold">
+					{{#if user}}
+					{{user}}
+					{{else}}
+					<u>not logged in</u>
+					{{/if}}
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>

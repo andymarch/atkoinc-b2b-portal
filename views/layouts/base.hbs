@@ -8,7 +8,6 @@
     integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
     crossorigin="anonymous"/>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-    <link rel="stylesheet", href="/public/stylesheets/style.css">
     <link rel="stylesheet", href="/public/stylesheets/template.css">
     <link rel="stylesheet", href="/public/plugins/nucleo/css/nucleo.css">
     <link rel="icon" sizes="16x16 32x32 64x64" href="/public/images/atkofavicon.png">
@@ -17,9 +16,11 @@
 
 <body class="bg-gradient-primary">
     {{> sidenav}}
-    <div class="content">
+    <div class="main-content">
         {{> contenthead}}
-        {{{body}}}
     </div>
+        {{{body}}}
+
+
 </body>
 </html>
