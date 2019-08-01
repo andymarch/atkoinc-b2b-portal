@@ -9,12 +9,14 @@
     crossorigin="anonymous"/>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
     <link rel="stylesheet", href="/public/stylesheets/style.css">
+    <link rel="stylesheet", href="/public/stylesheets/template.css">
+    <link rel="stylesheet", href="/public/plugins/nucleo/css/nucleo.css">
     <link rel="icon" sizes="16x16 32x32 64x64" href="/public/images/atkofavicon.png">
 </head>
+
+
 <body class="bg-gradient-primary">
-    <nav class="navbar">
-        {{> sidenav}}
-    </nav>
+    {{> sidenav}}
     <div class="content">
         {{> contenthead}}
         {{{body}}}
