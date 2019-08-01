@@ -5,11 +5,8 @@ const hbs  = require('express-handlebars')
 const session = require('express-session')
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const { ExpressOIDC } = require('@okta/oidc-middleware');
 const axios = require('axios');
-
-var indexRouter = require('./routes/index');
-var inviteRouter = require('./routes/invite');
+const { ExpressOIDC } = require('@okta/oidc-middleware');
 
 const PORT = process.env.PORT || 3000;
 
@@ -60,6 +57,9 @@ const oidc = new ExpressOIDC({
   appBaseUrl: process.env.APP_BASE_URL
 });
 app.use(oidc.router);
+
+var indexRouter = require('./routes/index');
+var inviteRouter = require('./routes/invite')(oidc);
 
 app.use('/', indexRouter);
 app.use('/invite', inviteRouter);
