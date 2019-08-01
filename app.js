@@ -1,9 +1,11 @@
-var createError = require('http-errors');
-var express = require('express');
+require('dotenv').config()
+const createError = require('http-errors');
+const express = require('express');
 const hbs  = require('express-handlebars')
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const session = require('express-session')
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const { ExpressOIDC } = require('@okta/oidc-middleware');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -41,6 +43,23 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+// session support is required to use ExpressOIDC
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: true,
+  saveUninitialized: false
+}));  
+
+const oidc = new ExpressOIDC({
+  issuer: process.env.ISSUER,
+  client_id: process.env.CLIENT_ID,
+  client_secret: process.env.CLIENT_SECRET,
+  redirect_uri: process.env.REDIRECT_URI,
+  scope: process.env.SCOPES,
+  appBaseUrl: process.env.APP_BASE_URL
+});
+app.use(oidc.router);
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
@@ -60,5 +79,4 @@ app.use(function(err, req, res, next) {
   res.render('error', { title: 'Error' });
 });
 
-
-app.listen(PORT, () => console.log('app started'));
+app.listen(PORT, () => console.log('App started'));
