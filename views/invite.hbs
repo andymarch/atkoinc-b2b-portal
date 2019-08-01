@@ -1,4 +1,75 @@
-<form action="/invite" method="POST">
+      <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+        <div class="container-fluid">
+          <div class="header-body">
+            <!-- Card stats -->
+            <div id="con_dashboard" class="row">
+				<div class="table-responsive">
+				    <div>
+				    <table class="table align-items-center">
+				        <thead class="thead-light">
+				            <tr>
+				                <th scope="col">
+				                    Invite user to the portal
+				                </th>
+				            </tr>
+				        </thead>
+				        <tbody class="list">
+				            <tr>
+				                <th scope="row" class="name">
+				                    <div class="media align-items-center">
+				                        <span class="avatar rounded-circle mr-3">
+				                          <span class="ni ni-single-02 text-white"></span>
+				                        </span>
+				                        <div class="media-body">
+				                            <span class="mb-0 text-sm">{{user}} would like to invite:</span>
+				                        </div>
+				                    </div>
+				                </th>
+				            </tr> 
+				            <tr>
+				              <td>
+				                <form action="/invite" method="POST">
+				                  <div class="row">
+				                    <div class="col-md-6">
+				                      <div class="form-group">
+				                        <span class="text-nowrap">first name</span>
+				                        <input type="text" name="firstname" value="{{user.firstname}}" class="form-control" placeholder="John">
+				                      </div>
+				                    </div>
+				                    <div class="col-md-6">
+				                      <div class="form-group">
+				                        <span class="text-nowrap">last name</span>
+				                        <input type="text" name="secondname" value="{{user.secondname}}" placeholder="Doe" class="form-control" />
+				                      </div>
+				                    </div>
+				                  </div>
+				                  <div class="row">
+				                    <div class="col-md-6">
+				                      <div class="form-group">
+				                        <span class="text-nowrap">email address</span>
+				                        <input type="text" name="email" value="{{user.email}}" class="form-control" placeholder="john.doe@domain.com">
+				                      </div>
+				                    </div>
+				                    <div class="col-md-6">
+				                      <div class="form-group">
+				                        <span class="text-nowrap">organization</span>
+				                        <input type="text" name="organization" value="{{user.organization}}" class="form-control" placeholder="Atko inc.">
+				                      </div>
+				                    </div>
+				                  </div>
+				                  <div class="row">
+				                    <div class="col-md-6">
+				                      <div class="form-group">
+				                      	<button style="display:none" class="btn-positive" type="submit">Submit</button>
+				                      	<button type="submit" class="btn btn-primary my-4">Send invite</button>
+				                      </div>
+				                    </div>
+				                  </div>
+				                </form>
+
+
+
+<form action="/invite" method="POST" style="display:none">
     <label for="firstname">First Name</label>
     <input type="text" name="firstname" value="{{user.firstname}}"></input>
     <label for="secondname">Second Name</label>
@@ -9,6 +80,16 @@
     <input type="text" name="organization" value="{{user.organization}}"></input>
     <button class="btn-positive" type="submit">Submit</button>
 </form>
+
+				              </td>
+				            </tr>           
+				        </tbody>
+				    </table>
+				</div>
+			</div>
+          </div>      
+        </div>
+      </div>
 
 {{#if err}}
 ERROR: {{error}}
