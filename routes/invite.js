@@ -22,9 +22,11 @@ module.exports = function (_oidc){
             profile: { 
                 firstName: req.body.firstname,
                 lastName: req.body.secondname,
+                organization: req.body.organization,
                 email: req.body.email,
                 login: req.body.email,
-                account_validated: 'False'
+                account_validated: 'false',
+                account_authenticated: 'false'
             }
         });
         var id = response.data.id
