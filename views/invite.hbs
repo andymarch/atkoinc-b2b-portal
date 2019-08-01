@@ -1,9 +1,13 @@
 <form action="/invite" method="POST">
-    <label for="name">First Name</label>
-    <input type="text" name="name" value="{{user.firstname}}"></input>
+    <label for="firstname">First Name</label>
+    <input type="text" name="firstname" value="{{user.firstname}}"></input>
     <label for="secondname">Second Name</label>
-    <input type="text" name="second" value="{{user.secondname}}"></input>
+    <input type="text" name="secondname" value="{{user.secondname}}"></input>
     <label for="email">Email</label>
     <input type="email" name="email" value="{{user.email}}"></input>
     <button class="btn-positive" type="submit">Submit</button>
 </form>
+
+{{#if err}}
+ERROR: {{error}}
+{{/if}}

@@ -64,7 +64,7 @@ var inviteRouter = require('./routes/invite')(oidc);
 app.use('/', indexRouter);
 app.use('/invite', inviteRouter);
 
-axios.defaults.headers.common['Authorization'] = `SSWS  `+process.env.API_KEY
+axios.defaults.headers.common['Authorization'] = `SSWS  `+process.env.API_TOKEN
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
