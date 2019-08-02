@@ -47,7 +47,7 @@ module.exports = function (_oidc){
     });
 
     router.get("/me"), async function(req,res,next){
-        res.redirect('/users/'+rreq.userContext.userinfo.sub)          
+        res.redirect('/users/'+req.userContext.userinfo.sub)          
     }
 
     router.post('/:id', oidc.ensureAuthenticated(), async function(req, res, next) {
