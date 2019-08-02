@@ -70,11 +70,13 @@ var indexRouter = require('./routes/index');
 var accountRouter = require('./routes/account')(oidc);
 var inviteRouter = require('./routes/invite')(oidc);
 var dashboardRouter = require('./routes/dashboard')(oidc);
+var usersRouter = require('./routes/users')(oidc);
 
 app.use('/', indexRouter);
 app.use('/account', accountRouter);
 app.use('/invite', inviteRouter);
 app.use('/dashboard', dashboardRouter);
+app.use('/users', usersRouter);
 
 
 axios.defaults.headers.common['Authorization'] = `SSWS  `+process.env.API_TOKEN
