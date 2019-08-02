@@ -22,17 +22,36 @@ module.exports = function (_oidc){
                 email: req.body.email,
                 login: req.body.email,
                 account_validated: 'false',
-                account_authenticated: 'false'
+                account_authenticated: 'false',
+                account_federated: req.body.federated
             }
         });
         var id = response.data.id
-        res.redirect('/invite/status?id='+encodeURIComponent(id));
+
+        //link the object to its creator
+        var response = await axios.put(
+          process.env.TENANT_URL + '/api/v1/users/' +
+          id + '/linkedObjects/account_creator/' +
+          req.userContext.userinfo.sub)
+        var response = await axios.put(
+            process.env.TENANT_URL + '/api/v1/users/' +
+            id + '/linkedObjects/account_owner/' +
+            req.userContext.userinfo.sub)
+
+        res.redirect('/invite/status?id=' + encodeURIComponent(id));
     }
     catch(error) {
-      console.log(error);
-      res.redirect('/?error='+encodeURIComponent("An error occurred"))
+      console.log(err)
+      // set locals, only providing error in development
+      res.locals.message = err.message;
+      res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+      // render the error page
+      res.status(err.status || 500);
+      res.render('error', { title: 'Error' });
+      }  
     }  
-  });
+  );
 
   router.get('/status', oidc.ensureAuthenticated(), async(req, res, next) => {
     var id = req.query.id;
