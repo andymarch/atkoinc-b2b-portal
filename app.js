@@ -1,4 +1,12 @@
 require('dotenv').config()
+
+//patch the root CA store with the openssl
+var rootCas = require('ssl-root-cas/latest').create();
+rootCas.addFile('./ssl/Sectigo_RSA_Domain_Validation_Secure_Server_CA.pem')
+rootCas.addFile('./ssl/USERTrust_RSA_Certification_Authority.pem')
+
+require('https').globalAgent.options.ca = rootCas;
+
 const createError = require('http-errors');
 const express = require('express');
 const hbs  = require('express-handlebars')
@@ -62,11 +70,13 @@ var indexRouter = require('./routes/index');
 var accountRouter = require('./routes/account')(oidc);
 var inviteRouter = require('./routes/invite')(oidc);
 var dashboardRouter = require('./routes/dashboard')(oidc);
+var usersRouter = require('./routes/users')(oidc);
 
 app.use('/', indexRouter);
 app.use('/account', accountRouter);
 app.use('/invite', inviteRouter);
 app.use('/dashboard', dashboardRouter);
+app.use('/users', usersRouter);
 
 
 axios.defaults.headers.common['Authorization'] = `SSWS  `+process.env.API_TOKEN

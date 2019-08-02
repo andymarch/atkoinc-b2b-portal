@@ -1,0 +1,45 @@
+<div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+<div class="container-fluid">
+    <div class="header-body">
+    <!-- Card stats -->
+    <div id="con_dashboard" class="row">
+        <div class="table-responsive">
+            <div>
+            <table class="table align-items-center">
+                <thead class="thead-light">
+                    <tr>
+                        <th></th>
+                        <th scope="col">
+                            User
+                        </th>
+                        <th scope="col">
+                            Status
+                        </th>
+                        <th scope="col">
+                            Organisation
+                        </th>
+                        <th scope="col">
+                            
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="list">
+                    {{#each users}}
+                    <tr>
+                        <td>
+                            <span class="avatar rounded-circle mr-3">
+                                <span class="ni ni-single-02 text-white"></span>
+                            </span>
+                        </td>
+                        <td>{{this.firstName}} {{this.secondName}}</td>
+                        <td>{{this.status}}</td>
+                        <td>{{this.organization}}</td>
+                    </tr> 
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+</div>
