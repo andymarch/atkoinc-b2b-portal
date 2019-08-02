@@ -1,0 +1,92 @@
+      <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+        <div class="container-fluid">
+          <div class="header-body">
+            <!-- Card stats -->
+            <div id="con_dashboard" class="row">
+				<div class="table-responsive">
+				    <div>
+				    <table class="table align-items-center">
+				        <thead class="thead-light">
+				            <tr>
+				                <th scope="col">
+				                    Update user profile
+				                </th>
+				            </tr>
+				        </thead>
+				        <tbody class="list">
+				            <tr>
+				                <th scope="row" class="name">
+				                    <div class="media align-items-center">
+				                        <span class="avatar rounded-circle mr-3">
+				                          <span class="ni ni-single-02 text-white"></span>
+				                        </span>
+				                    </div>
+				                </th>
+				            </tr> 
+				            <tr>
+				              <td>
+				                <form action="/users/{{targetUser.id}}" method="POST">
+				                  <div class="row">
+				                    <div class="col-md-6">
+				                      <div class="form-group">
+				                        <span class="text-nowrap">first name</span>
+				                        <input type="text" name="firstname" value="{{targetUser.firstName}}" class="form-control" placeholder="John">
+				                      </div>
+				                    </div>
+				                    <div class="col-md-6">
+				                      <div class="form-group">
+				                        <span class="text-nowrap">last name</span>
+				                        <input type="text" name="secondname" value="{{targetUser.secondName}}" placeholder="Doe" class="form-control" />
+				                      </div>
+				                    </div>
+				                  </div>
+				                  <div class="row">
+				                    <div class="col-md-6">
+				                      <div class="form-group">
+				                        <span class="text-nowrap">email address</span>
+				                        <input type="text" name="email" value="{{targetUser.email}}" class="form-control" placeholder="john.doe@domain.com">
+				                      </div>
+				                    </div>
+				                    <div class="col-md-6">
+				                      <div class="form-group">
+				                        <span class="text-nowrap">organization</span>
+				                        <input type="text" name="organization" value="{{targetUser.organization}}" class="form-control" placeholder="Atko inc.">
+				                      </div>
+				                    </div>
+				                  </div>
+				                  <div class="row">
+				                    <div class="col-md-6">
+				                      <div class="form-group">
+				                        <span class="text-nowrap">creator</span>
+				                        <input type="text" name="organization" value="{{user.account_creator}}" class="form-control" placeholder="{{user}}" disabled>
+				                      </div>
+				                    </div>
+				                    <div class="col-md-6">
+				                      <div class="form-group">
+				                        <span class="text-nowrap">federated</span>
+				                        <input type="text" name="organization" value="true" class="form-control" disabled>
+				                      </div>
+				                    </div>
+				                  </div>
+				                  <div class="row">
+				                    <div class="col-md-6">
+				                      <div class="form-group">
+				                      	<button style="display:none" class="btn-positive" type="submit">Submit</button>
+				                      	<button type="submit" class="btn btn-primary my-4">Update</button>
+				                      </div>
+				                    </div>
+				                  </div>
+				                </form>
+				              </td>
+				            </tr>           
+				        </tbody>
+				    </table>
+				</div>
+			</div>
+          </div>      
+        </div>
+      </div>
+
+{{#if err}}
+ERROR: {{error}}
+{{/if}}
