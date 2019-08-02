@@ -60,6 +60,20 @@
 				                  <div class="row">
 				                    <div class="col-md-6">
 				                      <div class="form-group">
+				                        <span class="text-nowrap">owner</span>
+				                        <input type="text" name="organization" value="{{user.account_owner}}" class="form-control" placeholder="{{user}}" disabled>
+				                      </div>
+				                    </div>
+				                    <div class="col-md-6">
+				                      <div class="form-group">
+				                        <span class="text-nowrap">federated</span>
+				                        <input type="text" name="organization" value="true" class="form-control" disabled>
+				                      </div>
+				                    </div>
+				                  </div>
+				                  <div class="row">
+				                    <div class="col-md-6">
+				                      <div class="form-group">
 				                      	<button style="display:none" class="btn-positive" type="submit">Submit</button>
 				                      	<button type="submit" class="btn btn-primary my-4">Send invite</button>
 				                      </div>
