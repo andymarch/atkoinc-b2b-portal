@@ -65,6 +65,13 @@ const oidc = new ExpressOIDC({
   appBaseUrl: process.env.APP_BASE_URL
 });
 app.use(oidc.router);
+app.use(async function (req,res,next){
+  if(req.userContext){
+    res.locals.user = req.userContext.userinfo;
+  }
+  next();
+})
+
 
 var indexRouter = require('./routes/index');
 var accountRouter = require('./routes/account')(oidc);
@@ -77,7 +84,6 @@ app.use('/account', accountRouter);
 app.use('/invite', inviteRouter);
 app.use('/dashboard', dashboardRouter);
 app.use('/users', usersRouter);
-
 
 axios.defaults.headers.common['Authorization'] = `SSWS  `+process.env.API_TOKEN
 

@@ -8,11 +8,7 @@ module.exports = function (_oidc){
 
   router.get('/', oidc.ensureAuthenticated(), function(req, res, next) {
     let err = req.query.error;
-    let user;
-    if(req.userContext){
-      user = req.userContext.userinfo.given_name
-    }
-    res.render('invite', { title: 'Invite New User', user: user, error:err});
+    res.render('invite', { title: 'Invite New User', error:err});
   });
 
   router.post('/', oidc.ensureAuthenticated(), async (req,res,next) => {
@@ -39,10 +35,6 @@ module.exports = function (_oidc){
   });
 
   router.get('/status', oidc.ensureAuthenticated(), async(req, res, next) => {
-    let user;
-    if(req.userContext){
-      user = req.userContext.userinfo.given_name
-    }
     var id = req.query.id;
     var response = await axios.get(process.env.TENANT_URL+'/api/v1/users/'+id)
     var inviteStatus;
@@ -54,7 +46,7 @@ module.exports = function (_oidc){
       inviteStatus = "complete"
     }
     var status = response.data.status;
-    res.render('invitestatus', { title: "Invite Status", user: user, invite: response.data, inviteStatus: inviteStatus});
+    res.render('invitestatus', { title: "Invite Status", invite: response.data, inviteStatus: inviteStatus});
   });
   return router;
 }

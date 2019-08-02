@@ -12,11 +12,11 @@
                   </span>
                   <div class="media-body ml-2 d-lg-block">
                     <span id="lbl_displayName" class="font-weight-bold">
-					{{#if user}}
-					{{user}}
-					{{else}}
-					<u>not logged in</u>
-					{{/if}}
+                    {{#if user}}
+                      {{user.given_name}}
+                    {{else}}
+                    <u>not logged in</u>
+                    {{/if}}
                     </span>
                   </div>
                 </div>

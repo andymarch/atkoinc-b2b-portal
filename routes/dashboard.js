@@ -6,11 +6,7 @@ module.exports = function (_oidc){
   oidc = _oidc;
 
 router.get('/', oidc.ensureAuthenticated(), function(req, res, next) {
-  let user;
-  if(req.userContext){
-    user = req.userContext.userinfo.given_name
-  }
-  res.render('dashboard', { title: 'Things',user: user});
+  res.render('dashboard', { title: 'Things'});
 });
 
   return router;

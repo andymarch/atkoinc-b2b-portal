@@ -21,7 +21,7 @@
 				                          <span class="ni ni-single-02 text-white"></span>
 				                        </span>
 				                        <div class="media-body">
-				                            <span class="mb-0 text-sm">{{user}} would like to invite:</span>
+				                            <span class="mb-0 text-sm">{{user.given_name}} would like to invite:</span>
 				                        </div>
 				                    </div>
 				                </th>
@@ -33,13 +33,13 @@
 				                    <div class="col-md-6">
 				                      <div class="form-group">
 				                        <span class="text-nowrap">first name</span>
-				                        <input type="text" name="firstname" value="{{user.firstname}}" class="form-control" placeholder="John">
+				                        <input type="text" name="firstname" class="form-control" placeholder="John">
 				                      </div>
 				                    </div>
 				                    <div class="col-md-6">
 				                      <div class="form-group">
 				                        <span class="text-nowrap">last name</span>
-				                        <input type="text" name="secondname" value="{{user.secondname}}" placeholder="Doe" class="form-control" />
+				                        <input type="text" name="secondname" placeholder="Doe" class="form-control" />
 				                      </div>
 				                    </div>
 				                  </div>
@@ -47,13 +47,13 @@
 				                    <div class="col-md-6">
 				                      <div class="form-group">
 				                        <span class="text-nowrap">email address</span>
-				                        <input type="text" name="email" value="{{user.email}}" class="form-control" placeholder="john.doe@domain.com">
+				                        <input type="text" name="email" class="form-control" placeholder="john.doe@domain.com">
 				                      </div>
 				                    </div>
 				                    <div class="col-md-6">
 				                      <div class="form-group">
 				                        <span class="text-nowrap">organization</span>
-				                        <input type="text" name="organization" value="{{user.organization}}" class="form-control" placeholder="Atko inc.">
+				                        <input type="text" name="organization" class="form-control" placeholder="Atko inc.">
 				                      </div>
 				                    </div>
 				                  </div>
@@ -61,7 +61,7 @@
 				                    <div class="col-md-6">
 				                      <div class="form-group">
 				                        <span class="text-nowrap">creator</span>
-				                        <input type="text" name="organization" value="{{user.account_owner}}" class="form-control" placeholder="{{user}}" disabled>
+				                        <input type="text" name="organization" class="form-control" placeholder="{{user.preferred_username}}" disabled>
 				                      </div>
 				                    </div>
 				                    <div class="col-md-6">

@@ -14,7 +14,7 @@ module.exports = function (_oidc){
         for(var user in response.data){
             userCollection.push(new UserModel(response.data[user]))
         }
-        res.render('users', { title: 'Users',user: req.userContext.userinfo.given_name,users:userCollection});
+        res.render('users', { title: 'Users',users:userCollection});
     }
     catch(err) {
         console.log(err)
@@ -32,7 +32,7 @@ module.exports = function (_oidc){
         try {
             var response = await axios.get(process.env.TENANT_URL+'/api/v1/users/'+req.params.id);
             var targetUser = new UserModel(response.data)
-            res.render('user', { title: 'Users', user: req.userContext.userinfo.given_name, targetUser:targetUser});
+            res.render('user', { title: 'Users', targetUser:targetUser});
         }
         catch(err) {
             console.log(err)
