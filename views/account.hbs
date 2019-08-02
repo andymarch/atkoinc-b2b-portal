@@ -1,0 +1,43 @@
+<div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+        <div class="header-body">
+        <!-- Card stats -->
+        <div id="con_dashboard" class="row">
+            <div class="table-responsive">
+                <div>
+                <table class="table align-items-center">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">
+                                Your Profile
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="list">
+                        <tr>
+                            <th scope="row" class="name">
+                                <div class="media align-items-center">
+                                    <span class="avatar rounded-circle mr-3">
+                                        <span class="ni ni-single-02 text-white"></span>
+                                    </span>
+                                    <div class="media-body">
+                                        <span class="mb-0 text-sm">{{user}}</span>
+                                    </div>
+                                </div>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="userinfo">
+                                <div class="media align-items-center">
+                                    <div class="media-body">
+                                        <pre>{{json usercontext.userinfo}}</pre>
+                                    </div>
+                                </div>
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

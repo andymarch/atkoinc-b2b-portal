@@ -1,0 +1,11 @@
+ACTIVATE
+{{msg}}
+
+{{#if pwdReset}}
+
+<form action="/account/activate" method="POST">
+    <input type="password" id="password" name="password"></input>
+    <input type="text" id="state" name="state" value="{{state}}"/>
+    <button type="submit">Submit</button>
+</form>
+{{/if}}

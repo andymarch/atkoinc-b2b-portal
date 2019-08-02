@@ -59,10 +59,12 @@ const oidc = new ExpressOIDC({
 app.use(oidc.router);
 
 var indexRouter = require('./routes/index');
+var accountRouter = require('./routes/account')(oidc);
 var inviteRouter = require('./routes/invite')(oidc);
 var dashboardRouter = require('./routes/dashboard')(oidc);
 
 app.use('/', indexRouter);
+app.use('/account', accountRouter);
 app.use('/invite', inviteRouter);
 app.use('/dashboard', dashboardRouter);
 
