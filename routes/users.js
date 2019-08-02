@@ -44,7 +44,11 @@ module.exports = function (_oidc){
             res.status(err.status || 500);
             res.render('error', { title: 'Error' });
             }  
-        });
+    });
+
+    router.get("/me"), async function(req,res,next){
+        res.redirect('/users/'+req.userContext.userinfo.sub)          
+    }
 
     router.post('/:id', oidc.ensureAuthenticated(), async function(req, res, next) {
             try {
@@ -58,7 +62,7 @@ module.exports = function (_oidc){
                         login: req.body.email
                     }
                 });
-                res.redirect(req.params.id)
+                res.redirect('/users/'+req.params.id)
             }
             catch(err) {
                 console.log(err)
