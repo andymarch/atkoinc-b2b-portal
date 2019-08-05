@@ -2,13 +2,30 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 var oidc = require('@okta/oidc-middleware');
+const UserModel = require('../models/usermodel')
 
 module.exports = function (_oidc){
   oidc = _oidc;
 
-  router.get('/', oidc.ensureAuthenticated(), function(req, res, next) {
+  router.get('/', oidc.ensureAuthenticated(), async function(req, res, next) {
     let err = req.query.error;
-    res.render('invite', { title: 'Invite New User', error:err});
+
+    try {
+      var response = await axios.get(process.env.TENANT_URL+'/api/v1/users/'+req.userContext.userinfo.sub);
+      var creatingUser = new UserModel(response.data)
+
+      res.render('invite', { title: 'Invite New User', error:err, federated: creatingUser.federated, organization: creatingUser.organization});
+    }
+    catch(error) {
+      console.log(err)
+      // set locals, only providing error in development
+      res.locals.message = err.message;
+      res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+      // render the error page
+      res.status(err.status || 500);
+      res.render('error', { title: 'Error' });
+    }
   });
 
   router.post('/', oidc.ensureAuthenticated(), async (req,res,next) => {
