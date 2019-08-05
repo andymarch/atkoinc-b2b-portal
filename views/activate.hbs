@@ -9,7 +9,7 @@
 				        <thead class="thead-light">
 				            <tr>
 				                <th scope="col">
-				                    Invite user to the portal
+				                    Please set your password to activate the account
 				                </th>
 				            </tr>
 				        </thead>
@@ -21,7 +21,7 @@
 				                          <span class="ni ni-single-02 text-white"></span>
 				                        </span>
 				                        <div class="media-body">
-				                            <span class="mb-0 text-sm">{{user.given_name}} would like to invite:</span>
+				                            <span class="mb-0 text-sm">Account activation</span>
 				                        </div>
 				                    </div>
 				                </th>
@@ -40,13 +40,13 @@
 				                    <div class="col-md-6">
 				                      <div class="form-group">
 				                        <span class="text-nowrap">password</span>
-				                        <input type="text" name="firstname" class="form-control" placeholder="John">
+				                        <input type="password" name="password" id="password" class="form-control" placeholder="John">
 				                      </div>
 				                    </div>
 				                    <div class="col-md-6">
 				                      <div class="form-group">
 				                        <span class="text-nowrap">token</span>
-				                        <input type="text" name="secondname" placeholder="Doe" class="form-control" disabled />
+				                        <input type="text" name="state" id="state" placeholder="token" class="form-control" value="{{state}}" disabled />
 				                      </div>
 				                    </div>
 				                  </div>
