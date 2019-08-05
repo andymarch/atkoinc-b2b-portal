@@ -30,6 +30,14 @@ module.exports = function (_oidc){
 
   router.post('/', oidc.ensureAuthenticated(), async (req,res,next) => {
     try {
+        var groups = []
+        var response = await axios.get(process.env.TENANT_URL+'/api/v1/users/'+req.userContext.userinfo.sub+"/groups");
+        for( var group in response.data) {
+            if(response.data[group].profile.name.startsWith("Partner:")){
+              groups.push(response.data[group].id)
+            }
+        }
+
         var response = await axios.post(process.env.TENANT_URL+'/api/v1/users',
         {
             profile: { 
@@ -41,7 +49,8 @@ module.exports = function (_oidc){
                 account_validated: 'false',
                 account_authenticated: 'false',
                 account_federated: req.body.federated
-            }
+            },
+            groupIds: groups
         });
         var id = response.data.id
 
@@ -54,6 +63,7 @@ module.exports = function (_oidc){
             process.env.TENANT_URL + '/api/v1/users/' +
             id + '/linkedObjects/account_owner/' +
             req.userContext.userinfo.sub)
+
 
         res.redirect('/invite/status?id=' + encodeURIComponent(id));
     }
