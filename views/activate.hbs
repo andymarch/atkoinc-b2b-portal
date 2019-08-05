@@ -1,11 +1,76 @@
-ACTIVATE
-{{msg}}
+      <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+        <div class="container-fluid">
+          <div class="header-body">
+            <!-- Card stats -->
+            <div id="con_dashboard" class="row">
+				<div class="table-responsive">
+				    <div>
+				    <table class="table align-items-center">
+				        <thead class="thead-light">
+				            <tr>
+				                <th scope="col">
+				                    Invite user to the portal
+				                </th>
+				            </tr>
+				        </thead>
+				        <tbody class="list">
+				            <tr>
+				                <th scope="row" class="name">
+				                    <div class="media align-items-center">
+				                        <span class="avatar rounded-circle mr-3">
+				                          <span class="ni ni-single-02 text-white"></span>
+				                        </span>
+				                        <div class="media-body">
+				                            <span class="mb-0 text-sm">{{user.given_name}} would like to invite:</span>
+				                        </div>
+				                    </div>
+				                </th>
+				            </tr> 
+				            <tr>
+				              <td>
 
-{{#if pwdReset}}
 
-<form action="/account/activate" method="POST">
-    <input type="password" id="password" name="password"></input>
-    <input type="text" id="state" name="state" value="{{state}}"/>
-    <button type="submit">Submit</button>
-</form>
-{{/if}}
+
+
+
+								{{msg}}
+								{{#if pwdReset}}
+				                <form action="/account/activate" method="POST">
+				                  <div class="row">
+				                    <div class="col-md-6">
+				                      <div class="form-group">
+				                        <span class="text-nowrap">password</span>
+				                        <input type="text" name="firstname" class="form-control" placeholder="John">
+				                      </div>
+				                    </div>
+				                    <div class="col-md-6">
+				                      <div class="form-group">
+				                        <span class="text-nowrap">token</span>
+				                        <input type="text" name="secondname" placeholder="Doe" class="form-control" disabled />
+				                      </div>
+				                    </div>
+				                  </div>
+				                  <div class="row">
+				                    <div class="col-md-6">
+				                      <div class="form-group">
+				                      	<button style="display:none" class="btn-positive" type="submit">Submit</button>
+				                      	<button type="submit" class="btn btn-primary my-4">Send invite</button>
+				                      </div>
+				                    </div>
+				                  </div>
+				                </form>
+				                {{/if}}
+				              </td>
+				            </tr>           
+				        </tbody>
+				    </table>
+				</div>
+			</div>
+          </div>      
+        </div>
+      </div>
+
+
+
+
+
