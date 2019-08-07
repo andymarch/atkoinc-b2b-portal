@@ -35,6 +35,7 @@
               </div>
             </div>
           </form>
+          {{#if user}}
           <!-- Navigation -->
           <ul class="navbar-nav">
             <li class="nav-item  class=" active" ">
@@ -73,10 +74,18 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/logout">
-                <i class="ni ni-check-bold"></i> logout
+                <i class="fas fa-sign-out-alt"></i>logout
               </a>
             </li>
           </ul>
+          {{else}}
+            <ul class="navbar-nav">
+            <li class="nav-item  class=" active" ">
+            <a class=" nav-link active " href="/dashboard"><i class="fas
+            fa-sign-in-alt text-primary"></i> Login </a>
+            </li>
+            </ul>
+          {{/if}}
         </div>
       </div>
     </nav>
