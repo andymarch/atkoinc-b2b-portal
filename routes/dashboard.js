@@ -9,18 +9,12 @@ module.exports = function (_oidc){
 
 router.get('/', oidc.ensureAuthenticated(), async function(req, res, next) {
   try {
-  var response = await axios.get(process.env.TENANT_URL+'/api/v1/apps?filter=user.id+eq+\"'+req.userContext.userinfo.sub+'\"')
+    //await axios.get(process.env.ORG_URL+'/api/v1/apps?filter=user.id+eq+\"'+req.userContext.userinfo.sub+'\"')
+    var response =  await axios.get(process.env.TENANT_URL+'/api/v1/users/'+req.userContext.userinfo.sub+'/appLinks')
         var apps = [];
-        response.data.forEach(function(entry) {
-            try{
-            if(entry.settings.oauthClient.initiate_login_uri){
-                apps.push(new ApplicationModel(entry.label,entry.settings.oauthClient.initiate_login_uri))
-            }   
-            }
-            catch(error){
-                //do nothing
-            }
-        })
+        for( var entry in response.data) {
+                apps.push(new ApplicationModel(response.data[entry].label,response.data[entry].linkUrl))  
+        }
   res.render('dashboard', { title: 'Things',applinks: apps});
   }
   catch(err) {
