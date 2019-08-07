@@ -29,8 +29,12 @@ module.exports = function (_oidc){
     });
 
     router.get('/:id', oidc.ensureAuthenticated(), async function(req, res, next) {
+        let sub = req.params.id;
+        if(sub === "me"){
+            sub = req.userContext.userinfo.sub
+        }
         try {
-            var response = await axios.get(process.env.TENANT_URL+'/api/v1/users/'+req.params.id);
+            var response = await axios.get(process.env.TENANT_URL+'/api/v1/users/'+sub);
             var targetUser = new UserModel(response.data)
             res.render('user', { title: 'Users', targetUser:targetUser});
         }
@@ -45,10 +49,6 @@ module.exports = function (_oidc){
             res.render('error', { title: 'Error' });
             }  
     });
-
-    router.get("/me"), async function(req,res,next){
-        res.redirect('/users/'+req.userContext.userinfo.sub)          
-    }
 
     router.post('/:id', oidc.ensureAuthenticated(), async function(req, res, next) {
             try {
