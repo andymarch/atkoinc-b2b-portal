@@ -33,7 +33,7 @@ router.get('/activate/:token', async function(req, res, next) {
                     var profileresp = await axios.get(process.env.TENANT_URL+'/api/v1/users/'+username);
                     var targetUser = new UserModel(profileresp.data)
                     if(targetUser.federated){
-                        res.redirect(process.env.TENANT_URL+"?username="+username+"&fromURI="+ encodeURI(process.env.APP_BASE_URL+"/login"))
+                        res.redirect(process.env.TENANT_URL+"?username="+username+"&fromURI="+ process.env.BOOKMARK_EMBED_URL)
                     }
                     else{
                         res.render('activate', { title: 'Activate Your Account', msg: "Whats the magic word?", state: response.data.stateToken, pwdReset: true});
