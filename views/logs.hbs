@@ -1,0 +1,40 @@
+<div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+<div class="container-fluid">
+    <div class="header-body">
+    <!-- Card stats -->
+    <div id="con_dashboard" class="row">
+        <div class="table-responsive">
+            <div>
+            <table class="table align-items-center">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">
+                            Severity
+                        </th>
+                        <th scope="col">
+                            Actor
+                        </th>
+                        <th scope="col">
+                            Message
+                        </th>
+                        <th scope="col">
+                            Outcome
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="list">
+                    {{#each logs}}
+                    <tr>
+                        <td>{{this.severity}}</td>
+                        <td>{{this.actor}}</td>
+                        <td>{{this.msg}}</td>
+                        <td>{{this.outcome}}</td>
+                    </tr> 
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+</div>
