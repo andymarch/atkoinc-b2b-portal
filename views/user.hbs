@@ -58,7 +58,13 @@
 				                    <div class="col-md-6">
 				                      <div class="form-group">
 				                        <span class="text-nowrap">creator</span>
-				                        <input type="text" name="organization" value="{{targetUser.account_creator}}" class="form-control" disabled>
+				                        <input type="text" name="organization" value="{{targetUser.account_creator.email}}" class="form-control" disabled>
+				                      </div>
+				                    </div>
+									<div class="col-md-6">
+				                      <div class="form-group">
+				                        <span class="text-nowrap">owner</span>
+				                        <input type="text" name="organization" value="{{targetUser.account_owner.email}}" class="form-control" disabled>
 				                      </div>
 				                    </div>
 				                    <div class="col-md-6">

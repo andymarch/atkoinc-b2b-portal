@@ -36,6 +36,23 @@ module.exports = function (_oidc){
         try {
             var response = await axios.get(process.env.TENANT_URL+'/api/v1/users/'+sub);
             var targetUser = new UserModel(response.data)
+
+            var creatorObj_response = await axios.get(
+                process.env.TENANT_URL+'/api/v1/users/' + sub + 
+                "/linkedObjects/account_creator")
+            if(creatorObj_response.data.length > 0){
+                var response = await axios.get(creatorObj_response.data[0]._links.self.href);
+                targetUser.setAccountCreator(response.data)
+            }
+
+            var ownerObj_response = await axios.get(
+                process.env.TENANT_URL+'/api/v1/users/' + sub + 
+                "/linkedObjects/account_owner")
+            if(ownerObj_response.data.length > 0){
+                var response = await axios.get(ownerObj_response.data[0]._links.self.href);
+                targetUser.setAccountOwner(response.data)
+            }
+
             res.render('user', { title: 'Users', targetUser:targetUser});
         }
         catch(err) {

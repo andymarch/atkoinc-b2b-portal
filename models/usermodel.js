@@ -10,8 +10,6 @@ class UserModel {
                 this.organization = profileJson.profile.organization
                 this.status = profileJson.status
 
-                this.account_creator = profileJson.profile.account_creator
-                this.account_owner = profileJson.profile.account_owner
                 this.validated = profileJson.profile.account_validated
                 this.authenticated = profileJson.profile.account_authenticated
                 this.federated = profileJson.profile.account_federated
@@ -23,6 +21,14 @@ class UserModel {
                 console.log(error);
             }
         }
+    }
+
+    setAccountCreator(linkedObjectJson) {
+        this.account_creator = new UserModel(linkedObjectJson)
+    }
+
+    setAccountOwner(linkedObjectJson){
+        this.account_owner = new UserModel(linkedObjectJson)
     }
 }
 
