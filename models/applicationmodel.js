@@ -1,8 +1,9 @@
 
 class ApplicationModel {
-    constructor(title,link) {
-        this.title = title
-        this.link = link
+    constructor(applink) {
+        this.title = applink.label
+        this.link = applink.linkUrl
+        this.logoUrl = applink.logoUrl
     }
 }
 
