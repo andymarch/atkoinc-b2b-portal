@@ -9,7 +9,12 @@ module.exports = function (_oidc){
 
     router.get('/', oidc.ensureAuthenticated(), async function(req, res, next) {
     try {
-        var response = await axios.get(process.env.TENANT_URL+'/api/v1/users?limit=50');
+        var response = await axios.get(process.env.TENANT_URL+'/api/v1/users/'+req.userContext.userinfo.sub);
+        var creatingUser = new UserModel(response.data)
+
+        var response = await axios.get(process.env.TENANT_URL + 
+            '/api/v1/users?search=' +
+            encodeURI('profile.organization eq "'+creatingUser.organization+'"'));
         var userCollection = []
         for(var user in response.data){
             userCollection.push(new UserModel(response.data[user]))
