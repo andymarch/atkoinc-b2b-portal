@@ -73,7 +73,7 @@ app.use(async function (req,res,next){
 })
 
 
-var indexRouter = require('./routes/index');
+var indexRouter = require('./routes/index')(oidc);
 var accountRouter = require('./routes/account')(oidc);
 var inviteRouter = require('./routes/invite')(oidc);
 var dashboardRouter = require('./routes/dashboard')(oidc);
