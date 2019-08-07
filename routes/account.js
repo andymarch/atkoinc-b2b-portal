@@ -51,8 +51,8 @@ router.get('/activate/:token', async function(req, res, next) {
                 stateToken: req.body.state,
                 newPassword: req.body.password
             });
-            var status = response.data.status
-            switch(status){
+            
+            switch(response.data.status){
                 case "SUCCESS":
                     res.render('activate', { title: 'Activate Your Account', msg: "You're all set"});
                 default:
