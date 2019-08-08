@@ -8,9 +8,9 @@ module.exports = function (_oidc){
     oidc = _oidc;
 
   router.get('/', oidc.ensureAuthenticated(), async function(req, res, next) {
-
     try {
-        var response = await axios.get(process.env.TENANT_URL+'/api/v1/logs/?limit=50');
+        var response = await axios.get(process.env.TENANT_URL+'/api/v1/logs/?limit=50'+
+        '&filter='+encodeURI('actor.id eq "'+req.userContext.userinfo.sub+'"'));
         var logs = [];
         for( var entry in response.data) {
             logs.push(new LogModel(response.data[entry]))  

@@ -9,6 +9,9 @@
                 <thead class="thead-light">
                     <tr>
                         <th scope="col">
+                            Event Time
+                        </th>
+                        <th scope="col">
                             Severity
                         </th>
                         <th scope="col">
@@ -25,6 +28,7 @@
                 <tbody class="list">
                     {{#each logs}}
                     <tr>
+                        <td>{{this.eventTime}}</td>
                         <td>{{this.severity}}</td>
                         <td>{{this.actor}}</td>
                         <td>{{this.msg}}</td>
