@@ -1,0 +1,65 @@
+      <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+        <div class="container-fluid">
+          <div class="header-body">
+            <!-- Card stats -->
+            <div id="con_dashboard" class="row">
+				<div class="table-responsive">
+				    <div>
+				    <table class="table align-items-center">
+				        <thead class="thead-light">
+				            <tr>
+				                <th scope="col">
+				                    User Info
+				                </th>
+				            </tr>
+				        </thead>
+				        <tbody class="list">
+                            <tr><td><pre>{{json userInfo}}</pre>  </td></tr>
+				        </tbody>
+				    </table>
+				</div>
+
+                <div class="table-responsive">
+				    <div>
+				    <table class="table align-items-center">
+				        <thead class="thead-light">
+				            <tr>
+				                <th scope="col">
+				                    ID Token
+				                </th>
+				            </tr>
+				        </thead>
+				        <tbody class="list">
+                            <tr>
+                                <td>
+                                    <pre>{{jwt idToken}}</pre>  
+                                </td>
+                            </tr>
+				        </tbody>
+				    </table>
+				</div>
+
+                <div class="table-responsive">
+				    <div>
+				    <table class="table align-items-center">
+				        <thead class="thead-light">
+				            <tr>
+				                <th scope="col">
+				                    Access Token
+				                </th>
+				            </tr>
+				        </thead>
+				        <tbody class="list">
+                            <tr><td><pre>{{jwt accessToken}}</pre></td></tr>
+                            
+				        </tbody>
+				    </table>
+				</div>
+			</div>
+          </div>      
+        </div>
+      </div>
+
+{{#if err}}
+ERROR: {{error}}
+{{/if}}

@@ -75,18 +75,21 @@ app.use(async function (req,res,next){
 })
 
 
-var indexRouter = require('./routes/index')(oidc);
-var accountRouter = require('./routes/account')(oidc);
-var inviteRouter = require('./routes/invite')(oidc);
-var dashboardRouter = require('./routes/dashboard')(oidc);
-var usersRouter = require('./routes/users')(oidc);
+var indexRouter = require('./routes/index')(oidc)
+var accountRouter = require('./routes/account')(oidc)
+var inviteRouter = require('./routes/invite')(oidc)
+var dashboardRouter = require('./routes/dashboard')(oidc)
+var usersRouter = require('./routes/users')(oidc)
 var logsRouter = require('./routes/logs')(oidc)
-app.use('/', indexRouter);
-app.use('/account', accountRouter);
-app.use('/invite', inviteRouter);
-app.use('/dashboard', dashboardRouter);
-app.use('/users', usersRouter);
+var tokenRouter = require('./routes/tokens')(oidc)
+
+app.use('/', indexRouter)
+app.use('/account', accountRouter)
+app.use('/invite', inviteRouter)
+app.use('/dashboard', dashboardRouter)
+app.use('/users', usersRouter)
 app.use('/logs',logsRouter)
+app.use('/tokens',tokenRouter)
 
 axios.defaults.headers.common['Authorization'] = `SSWS  `+process.env.API_TOKEN
 
