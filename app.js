@@ -39,6 +39,32 @@ app.engine('hbs',  hbs( {
         } else {
             return "Invalid or empty token was parsed"
         }
+    },
+    ifCond: function (v1, operator, v2, options) {
+      switch (operator) {
+          case '==':
+              return (v1 == v2) ? options.fn(this) : options.inverse(this);
+          case '===':
+              return (v1 === v2) ? options.fn(this) : options.inverse(this);
+          case '!=':
+              return (v1 != v2) ? options.fn(this) : options.inverse(this);
+          case '!==':
+              return (v1 !== v2) ? options.fn(this) : options.inverse(this);
+          case '<':
+              return (v1 < v2) ? options.fn(this) : options.inverse(this);
+          case '<=':
+              return (v1 <= v2) ? options.fn(this) : options.inverse(this);
+          case '>':
+              return (v1 > v2) ? options.fn(this) : options.inverse(this);
+          case '>=':
+              return (v1 >= v2) ? options.fn(this) : options.inverse(this);
+          case '&&':
+              return (v1 && v2) ? options.fn(this) : options.inverse(this);
+          case '||':
+              return (v1 || v2) ? options.fn(this) : options.inverse(this);
+          default:
+              return options.inverse(this);
+      }
     }
   }
 }));

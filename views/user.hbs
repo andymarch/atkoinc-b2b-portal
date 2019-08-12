@@ -20,8 +20,22 @@
 				                        <span class="avatar rounded-circle mr-3">
 				                          <span class="ni ni-single-02 text-white"></span>
 				                        </span>
-				                    </div>
-				                </th>
+										{{#ifCond targetUser.id '!==' self}}
+											{{#ifCond targetUser.status '===' 'ACTIVE'}}
+												<form action="/users/{{targetUser.id}}/disable" method="POST">
+												<button style="display:none" class="btn-positive" type="submit">Submit</button>
+												<button type="submit" class="btn btn-primary my-4">Deactivate</button>
+												</form>
+											{{/ifCond}}
+											{{#ifCond targetUser.status '===' 'SUSPENDED'}}
+												<form action="/users/{{targetUser.id}}/enable" method="POST">
+												<button style="display:none" class="btn-positive" type="submit">Submit</button>
+												<button type="submit" class="btn btn-primary my-4">Reactivate</button>
+												</form>
+											{{/ifCond}}
+										{{/ifCond}}
+									</div>
+								</th>
 				            </tr> 
 				            <tr>
 				              <td>
