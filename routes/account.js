@@ -59,10 +59,9 @@ router.get('/activate/:token', async function(req, res, next) {
                 newPassword: req.body.password
             });
             
-            switch(response.data.status){
-                case "SUCCESS":
+            if(response.data.status === "SUCCESS"){
                     res.render('activate', { title: 'Activate Your Account', msg: "You're all set"});
-                default:
+            } else {
                     res.render('activate', { title: 'Activate Your Account', msg: "failed"});
             }
         }
