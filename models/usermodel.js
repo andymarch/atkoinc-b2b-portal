@@ -10,9 +10,10 @@ class UserModel {
                 this.organization = profileJson.profile.organization
                 this.status = profileJson.status
 
-                this.validated = profileJson.profile.account_validated
-                this.authenticated = profileJson.profile.account_authenticated
-                this.federated = profileJson.profile.account_federated
+                this.invitor = (profileJson.profile.account_invitor === 'true')
+                this.validated = (profileJson.profile.account_validated === 'true')
+                this.authenticated = (profileJson.profile.account_authenticated === 'true')
+                this.federated = (profileJson.profile.account_federated === 'true')
 
                 this.lastLogin = profileJson.lastLogin
                 this.lastUpdate = profileJson.lastUpdated

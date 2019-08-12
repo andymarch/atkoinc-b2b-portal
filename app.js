@@ -14,6 +14,7 @@ const session = require('express-session')
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const axios = require('axios');
+const UserModel = require('./models/usermodel')
 const { ExpressOIDC } = require('@okta/oidc-middleware');
 
 const PORT = process.env.PORT || 3000;
@@ -67,7 +68,8 @@ const oidc = new ExpressOIDC({
 app.use(oidc.router);
 app.use(async function (req,res,next){
   if(req.userContext){
-    res.locals.user = req.userContext.userinfo;
+    var response = await axios.get(process.env.TENANT_URL+'/api/v1/users/'+req.userContext.userinfo.sub);
+    res.locals.user = new UserModel(response.data)
   }
   next();
 })

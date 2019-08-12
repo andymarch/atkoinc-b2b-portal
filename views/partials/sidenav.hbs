@@ -46,6 +46,7 @@
                 <i class="ni ni-circle-08 text-red"></i>My profile
               </a>
             </li>
+            {{#if user.invitor}}
             <li class="nav-item">
               <a class="nav-link" href="/invite">
                 <i class="ni ni-send text-red"></i> Invite user
@@ -56,6 +57,7 @@
                 <i class="ni ni-bullet-list-67 text-red"></i> Manage users
               </a>
             </li>
+            {{/if}}
             <li class="nav-item">
               <a class="nav-link" href="/logs">
                 <i class="fas fa-history text-red"></i>Your account events
