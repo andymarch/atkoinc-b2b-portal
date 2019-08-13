@@ -16,8 +16,8 @@ module.exports = function (_oidc){
 
       res.render('invite', { title: 'Invite New User', error:err, federated: creatingUser.federated, organization: creatingUser.organization});
     }
-    catch(error) {
-      console.log(error)
+    catch(err) {
+      console.log(err)
       // set locals, only providing error in development
       res.locals.message = err.message;
       res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -67,8 +67,8 @@ module.exports = function (_oidc){
 
         res.redirect('/invite/status?id=' + encodeURIComponent(id));
     }
-    catch(error) {
-      console.log(error)
+    catch(err) {
+      console.log(err)
       // set locals, only providing error in development
       res.locals.message = err.message;
       res.locals.error = req.app.get('env') === 'development' ? err : {};
