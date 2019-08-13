@@ -72,19 +72,23 @@
 				                    <div class="col-md-6">
 				                      <div class="form-group">
 				                        <span class="text-nowrap">creator</span>
-				                        <input type="text" name="organization" value="{{targetUser.account_creator.email}}" class="form-control" readonly="readonly">
+				                        <input type="text" name="account_creator" value="{{targetUser.account_creator.email}}" class="form-control" readonly="readonly">
 				                      </div>
 				                    </div>
 									<div class="col-md-6">
 				                      <div class="form-group">
 				                        <span class="text-nowrap">owner</span>
-				                        <input type="text" name="organization" value="{{targetUser.account_owner.email}}" class="form-control" readonly="readonly">
+				                        <input type="text" name="account_owner" value="{{targetUser.account_owner.email}}" class="form-control" readonly="readonly">
 				                      </div>
 				                    </div>
 				                    <div class="col-md-6">
 				                      <div class="form-group">
 				                        <span class="text-nowrap">federated</span>
-				                        <input type="text" name="organization" value="true" class="form-control" readonly="readonly">
+				                        <input type="text" name="federated"
+				                        value="true"
+				                        value="{{targetUser.federated}}"
+				                        class="form-control"
+				                        readonly="readonly">
 				                      </div>
 				                    </div>
 				                  </div>
