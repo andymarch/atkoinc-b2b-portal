@@ -59,7 +59,7 @@ router.get('/activate/:token', async function(req, res, next) {
                 newPassword: req.body.password
             });
             
-            if(response.data.status === "SUCCESS"){
+            if(response.data.status === "SUCCESS" || response.data.status === "MFA_ENROLL"){
                     res.render('activate', { title: 'Activate Your Account', msg: "You're all set"});
             } else {
                     res.render('activate', { title: 'Activate Your Account', msg: "Failed: status was "+response.data.status});
