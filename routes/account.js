@@ -60,7 +60,7 @@ router.get('/activate/:token', async function(req, res, next) {
             });
             
             if(response.data.status === "SUCCESS" || response.data.status === "MFA_ENROLL"){
-                    res.render('activate', { title: 'Activate Your Account', msg: "You're all set"});
+                    res.render('activate', { title: 'Activate Your Account', msg: "Your account has been activated. Please login to continue."});
             } else {
                     res.render('activate', { title: 'Activate Your Account', msg: "Failed: status was "+response.data.status});
             }
