@@ -62,7 +62,7 @@ router.get('/activate/:token', async function(req, res, next) {
             if(response.data.status === "SUCCESS"){
                     res.render('activate', { title: 'Activate Your Account', msg: "You're all set"});
             } else {
-                    res.render('activate', { title: 'Activate Your Account', msg: "failed"});
+                    res.render('activate', { title: 'Activate Your Account', msg: "Failed: status was "+response.data.status});
             }
         }
         catch(err) {
