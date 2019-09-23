@@ -65,6 +65,11 @@ app.engine('hbs',  hbs( {
           default:
               return options.inverse(this);
       }
+    },
+    select: function (value, options){
+      return options.fn(this).replace(
+        new RegExp(' value=\"' + value + '\"'),
+        '$& selected="selected"');
     }
   }
 }));

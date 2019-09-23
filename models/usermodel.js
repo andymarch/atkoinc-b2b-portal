@@ -14,6 +14,9 @@ class UserModel {
                 this.validated = (profileJson.profile.account_validated === 'true')
                 this.authenticated = (profileJson.profile.account_authenticated === 'true')
                 this.federated = (profileJson.profile.account_federated === 'true')
+                
+                this.role_app1 = profileJson.profile.role_app1
+                this.role_app2 = profileJson.profile.role_app2
 
                 this.lastLogin = profileJson.lastLogin
                 this.lastUpdate = profileJson.lastUpdated

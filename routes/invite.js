@@ -48,7 +48,9 @@ module.exports = function (_oidc){
                 login: req.body.email,
                 account_validated: 'false',
                 account_authenticated: 'false',
-                account_federated: req.body.federated
+                account_federated: req.body.federated,
+                role_app1: req.body.role_app1,
+                role_app2: req.body.role_app2
             },
             groupIds: groups
         });

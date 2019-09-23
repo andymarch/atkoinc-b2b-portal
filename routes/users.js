@@ -81,7 +81,9 @@ module.exports = function (_oidc){
                         lastName: req.body.secondname,
                         organization: req.body.organization,
                         email: req.body.email,
-                        login: req.body.email
+                        login: req.body.email,
+                        role_app1: req.body.role_app1,
+                        role_app2: req.body.role_app2
                     }
                 });
                 res.redirect('/users/'+req.params.id)
