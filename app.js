@@ -100,7 +100,6 @@ app.use(oidc.router);
 app.use(async function (req,res,next){
   try{
     if(req.userContext){
-      console.log(req.userContext)
       var response = await axios.get(process.env.TENANT_URL+'/api/v1/users/'+req.userContext.userinfo.sub);
       res.locals.user = new UserModel(response.data)
     }
