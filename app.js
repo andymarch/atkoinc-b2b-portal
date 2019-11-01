@@ -98,9 +98,14 @@ const oidc = new ExpressOIDC({
 });
 app.use(oidc.router);
 app.use(async function (req,res,next){
-  if(req.userContext){
-    var response = await axios.get(process.env.TENANT_URL+'/api/v1/users/'+req.userContext.userinfo.sub);
-    res.locals.user = new UserModel(response.data)
+  try{
+    if(req.userContext){
+      var response = await axios.get(process.env.TENANT_URL+'/api/v1/users/'+req.userContext.userinfo.sub);
+      res.locals.user = new UserModel(response.data)
+    }
+  }
+  catch(err) {
+    console.log(err)
   }
   next();
 })
