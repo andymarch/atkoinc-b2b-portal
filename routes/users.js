@@ -12,12 +12,20 @@ module.exports = function (_oidc){
         var response = await axios.get(process.env.TENANT_URL+'/api/v1/users/'+req.userContext.userinfo.sub);
         var creatingUser = new UserModel(response.data)
 
+        //build search conditionals always including organization
+        var search = 'profile.organization eq "'+creatingUser.organization+'"'
+        if(req.query.role_app1){
+            search = search + ' and profile.role_app1 eq "'+req.query.role_app1+'"'
+        }
+        if(req.query.role_app2){
+            search = search + ' and profile.role_app2 eq "'+req.query.role_app2+'"'
+        }
+
         var response = await axios.get(process.env.TENANT_URL + 
-            '/api/v1/users?search=' +
-            encodeURI('profile.organization eq "'+creatingUser.organization+'"'));
+            '/api/v1/users?search=' + encodeURI(search));
         var userCollection = []
         for(var user in response.data){
-            userCollection.push(new UserModel(response.data[user]))
+            userCollection.push(new UserModel(response.data[user]))  
         }
         res.render('users', { title: 'Users',organization: creatingUser.organization, users:userCollection});
     }
