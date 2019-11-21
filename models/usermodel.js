@@ -6,6 +6,7 @@ class UserModel {
                 this.id = profileJson.id
                 this.firstName = profileJson.profile.firstName
                 this.secondName = profileJson.profile.lastName
+                this.login = profileJson.profile.login
                 this.email = profileJson.profile.email
                 this.organization = profileJson.profile.organization
                 this.status = profileJson.status

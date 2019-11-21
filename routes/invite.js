@@ -45,7 +45,7 @@ module.exports = function (_oidc){
                 lastName: req.body.secondname,
                 organization: req.body.organization,
                 email: req.body.email,
-                login: req.body.email,
+                login: req.body.login,
                 account_validated: 'false',
                 account_authenticated: 'false',
                 account_federated: req.body.federated,

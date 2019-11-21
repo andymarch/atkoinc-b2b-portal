@@ -9,7 +9,7 @@
 				        <thead class="thead-light">
 				            <tr>
 				                <th scope="col">
-				                    Invite user to the portal
+				                    Invite user to join {{organization}}
 				                </th>
 				            </tr>
 				        </thead>
@@ -29,83 +29,79 @@
 				            <tr>
 				              <td>
 				                <form action="/invite" method="POST">
-				                  <div class="row">
-				                    <div class="col-md-6">
-				                      <div class="form-group">
-				                        <span class="text-nowrap">first name</span>
-				                        <input type="text" name="firstname" class="form-control" placeholder="John">
-				                      </div>
-				                    </div>
-				                    <div class="col-md-6">
-				                      <div class="form-group">
-				                        <span class="text-nowrap">last name</span>
-				                        <input type="text" name="secondname" placeholder="Doe" class="form-control" />
-				                      </div>
-				                    </div>
-				                  </div>
-				                  <div class="row">
-				                    <div class="col-md-6">
-				                      <div class="form-group">
-				                        <span class="text-nowrap">email address</span>
-				                        <input type="text" name="email" class="form-control" placeholder="john.doe@domain.com">
-				                      </div>
-				                    </div>
-				                    <div class="col-md-6">
-				                      <div class="form-group">
-				                        <span class="text-nowrap">organization</span>
-				                        <input type="text" name="organization"
-				                        class="form-control"
-				                        value="{{organization}}"
-				                        placeholder="Atko inc." readonly="readonly">
-				                      </div>
-				                    </div>
-				                  </div>
-				                  <div class="row">
-				                    <div class="col-md-6">
-				                      <div class="form-group">
-				                        <span class="text-nowrap">creator</span>
-				                        <input type="text" name="creator" class="form-control" placeholder="{{user.email}}" readonly="readonly">
-				                      </div>
-				                    </div>
-				                    <div class="col-md-6">
-				                      <div class="form-group">
-				                        <span class="text-nowrap">federated</span>
-				                        <input type="text" name="federated" value="{{federated}}" class="form-control" readonly="readonly">
-				                      </div>
-				                    </div>
-				                  </div>
-								  <div class="row">
-				                    <div class="col-md-6">
-				                      <div class="form-group">
-				                        <span class="text-nowrap">Auction Portal (app 1)</span>
-										<select class="form-control" name="role_app1" >
-											<option value="">None</option>
-											<option value="user">User</option>
-											<option value="admin">Admin</option>
-											<option value="super admin">Super Admin</option>
-										</select>
-				                      </div>
-				                    </div>
-				                    <div class="col-md-6">
-				                      <div class="form-group">
-				                        <span class="text-nowrap">Financial Portal (app 2)</span>
-										<select class="form-control" name="role_app2" >
-											<option value="">None</option>
-											<option value="user">User</option>
-											<option value="admin">Admin</option>
-											<option value="super admin">Super Admin</option>
-										</select>
-				                      </div>
-				                    </div>
-				                  </div>
-				                  <div class="row">
-				                    <div class="col-md-6">
-				                      <div class="form-group">
-				                      	<button style="display:none" class="btn-positive" type="submit">Submit</button>
-				                      	<button type="submit" class="btn btn-primary my-4">Send invite</button>
-				                      </div>
-				                    </div>
-				                  </div>
+								  	<div class="row">
+										<div class="col-md-6 form-group">
+												<span class="text-nowrap">Username</span>
+												<input type="text" name="login"
+												class="form-control" placeholder="" required>
+										</div>
+										<div class="col-md-6 form-group">
+												<span class="text-nowrap">Email address</span>
+												<input type="email" name="email"
+												class="form-control"
+												placeholder="john.doe@domain.com"
+												required>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6 form-group">
+											<span class="text-nowrap">First name</span>
+											<input type="text" name="firstname"
+											class="form-control"
+											placeholder="John" required>
+										</div>
+										<div class="col-md-6 form-group">
+											<span class="text-nowrap">Last name</span>
+											<input type="text" name="secondname" placeholder="Doe" class="form-control" required/>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6 form-group">
+											<span class="text-nowrap">Auction Portal (app 1)</span>
+											<select class="form-control" name="role_app1" >
+												<option value="">None</option>
+												<option value="user">User</option>
+												<option value="admin">Admin</option>
+												<option value="super admin">Super Admin</option>
+											</select>
+										</div>
+										<div class="col-md-6 form-group">
+											<span class="text-nowrap">Financial Portal (app 2)</span>
+											<select class="form-control" name="role_app2" >
+												<option value="">None</option>
+												<option value="user">User</option>
+												<option value="admin">Admin</option>
+												<option value="super admin">Super Admin</option>
+											</select>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6 form-group">
+											<button style="display:none" class="btn-positive" type="submit">Submit</button>
+											<button type="submit" class="btn btn-primary my-4">Send invite</button>
+										</div>
+									</div>
+
+									<div>
+										<h3>Profile Meta Information</h3>
+										<div class="row">
+											<div class="col-md-2 form-group">
+												<span class="text-nowrap">Creator</span>
+												<input type="text" name="creator" class="form-control" placeholder="{{user.email}}" readonly="readonly">
+											</div>
+											<div class="col-md-2 form-group">
+												<span class="text-nowrap">Federated</span>
+												<input type="text" name="federated" value="{{federated}}" class="form-control" readonly="readonly">
+											</div>
+											<div class="col-md-2 form-group">
+												<span class="text-nowrap">Organization</span>
+												<input type="text" name="organization"
+												class="form-control"
+												value="{{organization}}"
+												placeholder="Atko inc." readonly="readonly">
+											</div>
+										</div>
+									</div>
 				                </form>
 				              </td>
 				            </tr>           
