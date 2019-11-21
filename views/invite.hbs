@@ -26,6 +26,17 @@
 				                    </div>
 				                </th>
 				            </tr> 
+							{{#if error}}
+								<tr class="alert-danger">
+									<td>								
+										<div class="row">
+											<div class="col-md-12">
+												{{error}}
+											</div>
+										</div>
+									</td>
+								</tr>
+							{{/if}}
 				            <tr>
 				              <td>
 				                <form action="/invite" method="POST">
@@ -33,14 +44,16 @@
 										<div class="col-md-6 form-group">
 												<span class="text-nowrap">Username</span>
 												<input type="text" name="login"
-												class="form-control" placeholder="" required>
+												class="form-control" placeholder="" required
+												value="{{targetUser.login}}">
 										</div>
 										<div class="col-md-6 form-group">
 												<span class="text-nowrap">Email address</span>
 												<input type="email" name="email"
 												class="form-control"
 												placeholder="john.doe@domain.com"
-												required>
+												required
+												value="{{targetUser.email}}">
 										</div>
 									</div>
 									<div class="row">
@@ -48,30 +61,39 @@
 											<span class="text-nowrap">First name</span>
 											<input type="text" name="firstname"
 											class="form-control"
-											placeholder="John" required>
+											placeholder="John" required 
+											value="{{targetUser.firstName}}">
 										</div>
 										<div class="col-md-6 form-group">
 											<span class="text-nowrap">Last name</span>
-											<input type="text" name="secondname" placeholder="Doe" class="form-control" required/>
+											<input type="text" name="secondname"
+											placeholder="Doe"
+											class="form-control"
+											value="{{targetUser.secondName}}"
+											required/>
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-md-6 form-group">
 											<span class="text-nowrap">Auction Portal (app 1)</span>
 											<select class="form-control" name="role_app1" >
+												{{#select targetUser.role_app1}}
 												<option value="">None</option>
 												<option value="user">User</option>
 												<option value="admin">Admin</option>
 												<option value="super admin">Super Admin</option>
+												{{/select}}
 											</select>
 										</div>
 										<div class="col-md-6 form-group">
 											<span class="text-nowrap">Financial Portal (app 2)</span>
 											<select class="form-control" name="role_app2" >
+												{{#select targetUser.role_app2}}
 												<option value="">None</option>
 												<option value="user">User</option>
 												<option value="admin">Admin</option>
 												<option value="super admin">Super Admin</option>
+												{{/select}}
 											</select>
 										</div>
 									</div>
@@ -81,19 +103,18 @@
 											<button type="submit" class="btn btn-primary my-4">Send invite</button>
 										</div>
 									</div>
-
 									<div>
 										<h3>Profile Meta Information</h3>
 										<div class="row">
-											<div class="col-md-2 form-group">
+											<div class="col-md-4 form-group">
 												<span class="text-nowrap">Creator</span>
 												<input type="text" name="creator" class="form-control" placeholder="{{user.email}}" readonly="readonly">
 											</div>
-											<div class="col-md-2 form-group">
+											<div class="col-md-4 form-group">
 												<span class="text-nowrap">Federated</span>
 												<input type="text" name="federated" value="{{federated}}" class="form-control" readonly="readonly">
 											</div>
-											<div class="col-md-2 form-group">
+											<div class="col-md-4 form-group">
 												<span class="text-nowrap">Organization</span>
 												<input type="text" name="organization"
 												class="form-control"
@@ -112,7 +133,3 @@
           </div>      
         </div>
       </div>
-
-{{#if err}}
-ERROR: {{error}}
-{{/if}}

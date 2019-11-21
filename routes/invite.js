@@ -71,7 +71,14 @@ module.exports = function (_oidc){
     }
     catch(err) {
       if(err.response.data.errorSummary === "Api validation failed: login"){
-        res.render('invite', { title: 'Invite New User', error:"That username is already taken.", federated: req.body.federated, organization: req.body.organization});
+        var requestedUser = new UserModel()
+        requestedUser.firstName = req.body.firstname
+        requestedUser.secondName = req.body.secondname
+        requestedUser.login = req.body.login
+        requestedUser.email = req.body.email
+        requestedUser.role_app1 = req.body.role_app1
+        requestedUser.role_app2 = req.body.role_app2
+        res.render('invite', { title: 'Invite New User', error:"That username is already taken.", federated: req.body.federated, organization: req.body.organization, targetUser: requestedUser});
       }
       else{
         console.log(err)
