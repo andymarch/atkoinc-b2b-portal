@@ -12,8 +12,24 @@ router.get('/', oidc.ensureAuthenticated(), function(req, res, next) {
 });
 
 router.get('/resetpassword/:token', async function(req, res, next) {
-    var token = req.params.token;
-    res.render("resetPwd",{ title: 'Reset your password',state: token})
+
+    try{
+        var resp = await axios.post(process.env.TENANT_URL+'/api/v1/authn/recovery/token',
+        {
+            recoveryToken: req.body.token,
+        })
+        var token = resp.data.stateToken
+        res.render("resetPwd",{ title: 'Reset your password',state: token})
+    } catch(err) {
+        console.log(err)
+        // set locals, only providing error in development
+        res.locals.message = err.message;
+        res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+        // render the error page
+        res.status(err.status || 500);
+        res.render('error', { title: 'Error' });
+    }  
 })
 
 router.post('/resetpassword/', async function(req, res, next) {
@@ -25,7 +41,7 @@ router.post('/resetpassword/', async function(req, res, next) {
         newPassword: req.body.password  
         })
         res.redirect('/dashboard')
-    }catch(err) {
+    } catch(err) {
         console.log(err)
         // set locals, only providing error in development
         res.locals.message = err.message;
