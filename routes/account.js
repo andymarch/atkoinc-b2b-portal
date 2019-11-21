@@ -41,6 +41,9 @@ router.post('/resetpassword/', async function(req, res, next) {
         })
         res.redirect('/dashboard')
     } catch(err) {
+        if(err.response.data.errorCode === 'E0000080'){
+            res.render("resetPwd",{ title: 'Reset your password',state: req.body.state, error: err.response.data.errorSummary})
+        }
         console.log(err)
         // set locals, only providing error in development
         res.locals.message = err.message;

@@ -25,7 +25,18 @@
 				                        </div>
 				                    </div>
 				                </th>
-				            </tr> 
+				            </tr>
+							{{#if error}}
+								<tr class="alert-danger">
+									<td>								
+										<div class="row">
+											<div class="col-md-12">
+												{{error}}
+											</div>
+										</div>
+									</td>
+								</tr>
+							{{/if}} 
 				            <tr>
 				              <td>
 				                <form action="/account/resetpassword" method="POST">
