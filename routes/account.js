@@ -17,7 +17,6 @@ router.get('/resetpassword/:token', async function(req, res, next) {
         {
             recoveryToken: req.params.token,
         })
-        console.log(resp)
         res.render("resetPwd",{ title: 'Reset your password',state: resp.data.stateToken})
     } catch(err) {
         console.log(err)
@@ -44,15 +43,17 @@ router.post('/resetpassword/', async function(req, res, next) {
         if(err.response.data.errorCode === 'E0000080'){
             res.render("resetPwd",{ title: 'Reset your password',state: req.body.state, error: err.response.data.errorSummary})
         }
-        console.log(err)
-        // set locals, only providing error in development
-        res.locals.message = err.message;
-        res.locals.error = req.app.get('env') === 'development' ? err : {};
+        else{
+            console.log(err)
+            // set locals, only providing error in development
+            res.locals.message = err.message;
+            res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-        // render the error page
-        res.status(err.status || 500);
-        res.render('error', { title: 'Error' });
-        }  
+            // render the error page
+            res.status(err.status || 500);
+            res.render('error', { title: 'Error' });
+        }
+    }  
 })
 
 router.get('/activate/:token', async function(req, res, next) {
