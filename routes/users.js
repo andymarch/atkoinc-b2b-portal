@@ -97,8 +97,8 @@ module.exports = function (_oidc){
                 // render the error page
                 res.status(err.status || 500);
                 res.render('error', { title: 'Error' });
-                }  
-            });
+            }  
+        });
 
     router.post('/:id/disable', oidc.ensureAuthenticated(), async function(req, res, next) {
         try {
@@ -115,24 +115,42 @@ module.exports = function (_oidc){
             res.status(err.status || 500);
             res.render('error', { title: 'Error' });
             }  
-        });
+    });
 
     router.post('/:id/enable', oidc.ensureAuthenticated(), async function(req, res, next) {
-            try {
-                await axios.post(process.env.TENANT_URL+'/api/v1/users/'+req.params.id+'/lifecycle/unsuspend');
-                res.redirect('/users/'+req.params.id)
-            }
-            catch(err) {
-                console.log(err)
-                // set locals, only providing error in development
-                res.locals.message = err.message;
-                res.locals.error = req.app.get('env') === 'development' ? err : {};
-        
-                // render the error page
-                res.status(err.status || 500);
-                res.render('error', { title: 'Error' });
-                }  
-            });
+        try {
+            await axios.post(process.env.TENANT_URL+'/api/v1/users/'+req.params.id+'/lifecycle/unsuspend');
+            res.redirect('/users/'+req.params.id)
+        }
+        catch(err) {
+            console.log(err)
+            // set locals, only providing error in development
+            res.locals.message = err.message;
+            res.locals.error = req.app.get('env') === 'development' ? err : {};
+    
+            // render the error page
+            res.status(err.status || 500);
+            res.render('error', { title: 'Error' });
+            }  
+    });
+
+    router.post('/:id/delete', oidc.ensureAuthenticated(), async function(req, res, next) {
+        try {
+            await axios.post(process.env.TENANT_URL+'/api/v1/users/'+req.params.id+'/lifecycle/deactivate');
+            await axios.delete(process.env.TENANT_URL+'/api/v1/users/'+req.params.id);
+            res.redirect('/users/')
+        }
+        catch(err) {
+            console.log(err)
+            // set locals, only providing error in development
+            res.locals.message = err.message;
+            res.locals.error = req.app.get('env') === 'development' ? err : {};
+    
+            // render the error page
+            res.status(err.status || 500);
+            res.render('error', { title: 'Error' });
+            }  
+    });
   return router;
 }
 
