@@ -11,7 +11,7 @@ module.exports = function (_oidc){
   });
 
   router.get('/notAuthorized', function(req, res, next) {
-    res.render('notAuthorized', { title: 'Partner Management Portal'});
+    res.render('notauthorized', { title: 'Partner Management Portal'});
   });
 
   router.get("/logout", (req, res) => {

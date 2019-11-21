@@ -11,6 +11,32 @@ router.get('/', oidc.ensureAuthenticated(), function(req, res, next) {
   res.render('account', { title: 'Your Account',user: req.userContext.userinfo.given_name ,usercontext: req.userContext});
 });
 
+router.get('/resetpassword/:token', async function(req, res, next) {
+    var token = req.params.token;
+    res.render("resetPwd",{ title: 'Reset your password',state: token})
+})
+
+router.post('/resetpassword/', async function(req, res, next) {
+
+    try{
+        await axios.post(process.env.TENANT_URL+'/api/v1/authn/credentials/reset_password',
+        {
+        stateToken: req.body.state,
+        newPassword: req.body.password  
+        })
+        res.redirect('/dashboard')
+    }catch(err) {
+        console.log(err)
+        // set locals, only providing error in development
+        res.locals.message = err.message;
+        res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+        // render the error page
+        res.status(err.status || 500);
+        res.render('error', { title: 'Error' });
+        }  
+})
+
 router.get('/activate/:token', async function(req, res, next) {
     var token = req.params.token;
     var username = req.query.username;

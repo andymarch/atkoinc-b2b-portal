@@ -1,0 +1,62 @@
+      <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+        <div class="container-fluid">
+          <div class="header-body">
+            <!-- Card stats -->
+            <div id="con_dashboard" class="row">
+				<div class="table-responsive">
+				    <div>
+				    <table class="table align-items-center">
+				        <thead class="thead-light">
+				            <tr>
+				                <th scope="col">
+				                    Please reset your password 
+				                </th>
+				            </tr>
+				        </thead>
+				        <tbody class="list">
+				            <tr>
+				                <th scope="row" class="name">
+				                    <div class="media align-items-center">
+				                        <span class="avatar rounded-circle mr-3">
+				                          <span class="ni ni-single-02 text-white"></span>
+				                        </span>
+				                        <div class="media-body">
+				                            <span class="mb-0 text-sm">Account activation</span>
+				                        </div>
+				                    </div>
+				                </th>
+				            </tr> 
+				            <tr>
+				              <td>
+				                <form action="/account/resetpassword" method="POST">
+				                  <div class="row">
+				                    <div class="col-md-6">
+				                      <div class="form-group">
+				                        <span class="text-nowrap">password</span>
+				                        <input type="password" name="password" id="password" class="form-control" placeholder="enter your password here">
+				                        <input type="text" name="state" id="state" value="{{state}}" />
+				                      </div>
+				                    </div>
+				                  </div>
+				                  <div class="row">
+				                    <div class="col-md-6">
+				                      <div class="form-group">
+				                      	<button type="submit" class="btn btn-primary my-4">Set password</button>
+				                      </div>
+				                    </div>
+				                  </div>
+				                </form>
+				              </td>
+				            </tr>           
+				        </tbody>
+				    </table>
+				</div>
+			</div>
+          </div>      
+        </div>
+      </div>
+
+
+
+
+
