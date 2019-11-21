@@ -12,14 +12,13 @@ router.get('/', oidc.ensureAuthenticated(), function(req, res, next) {
 });
 
 router.get('/resetpassword/:token', async function(req, res, next) {
-
     try{
         var resp = await axios.post(process.env.TENANT_URL+'/api/v1/authn/recovery/token',
         {
-            recoveryToken: req.body.token,
+            recoveryToken: req.params.token,
         })
-        var token = resp.data.stateToken
-        res.render("resetPwd",{ title: 'Reset your password',state: token})
+        console.log(resp)
+        res.render("resetPwd",{ title: 'Reset your password',state: resp.data.stateToken})
     } catch(err) {
         console.log(err)
         // set locals, only providing error in development
