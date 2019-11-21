@@ -5,7 +5,14 @@
     <div id="con_dashboard" class="row">
         <div class="table-responsive">
             <div>
-            <table class="table align-items-center">
+            <table class="table centered-text">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">
+                            Members of {{organization}}
+                        </th>
+                    </tr>
+                </thead>
                 <thead class="thead-light">
                     <tr>
                         <th></th>
@@ -16,7 +23,10 @@
                             Status
                         </th>
                         <th scope="col">
-                            Organisation
+                            Auction Portal (app 1)
+                        </th>
+                        <th scope="col">
+                            Financial Portal (app 2)
                         </th>
                         <th scope="col">
                             
@@ -33,7 +43,8 @@
                         </td>
                         <td>{{this.firstName}} {{this.secondName}}</td>
                         <td>{{this.status}}</td>
-                        <td>{{this.organization}}</td>
+                        <td>{{this.role_app1}}</td>
+                        <td>{{this.role_app2}}</td>
                         <td><a href="/users/{{this.id}}"><i class="fas fa-user-edit"></i></a></td>
                     </tr> 
                     {{/each}}

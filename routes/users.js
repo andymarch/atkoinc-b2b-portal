@@ -19,7 +19,7 @@ module.exports = function (_oidc){
         for(var user in response.data){
             userCollection.push(new UserModel(response.data[user]))
         }
-        res.render('users', { title: 'Users',users:userCollection});
+        res.render('users', { title: 'Users',organization: creatingUser.organization, users:userCollection});
     }
     catch(err) {
         console.log(err)
