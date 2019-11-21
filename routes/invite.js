@@ -46,7 +46,7 @@ module.exports = function (_oidc){
                 organization: req.body.organization,
                 email: req.body.email,
                 login: req.body.login,
-                account_validated: 'false',
+                account_validated: 'true',
                 account_authenticated: 'false',
                 account_federated: req.body.federated,
                 role_app1: req.body.role_app1,
@@ -70,14 +70,19 @@ module.exports = function (_oidc){
         res.redirect('/invite/status?id=' + encodeURIComponent(id));
     }
     catch(err) {
-      console.log(err)
-      // set locals, only providing error in development
-      res.locals.message = err.message;
-      res.locals.error = req.app.get('env') === 'development' ? err : {};
+      if(err.response.data.errorSummary === "Api validation failed: login"){
+        res.render('invite', { title: 'Invite New User', error:"That username is already taken.", federated: req.body.federated, organization: req.body.organization});
+      }
+      else{
+        console.log(err)
+        // set locals, only providing error in development
+        res.locals.message = err.message;
+        res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-      // render the error page
-      res.status(err.status || 500);
-      res.render('error', { title: 'Error' });
+        // render the error page
+        res.status(err.status || 500);
+        res.render('error', { title: 'Error' });
+      }
       }  
     }  
   );
