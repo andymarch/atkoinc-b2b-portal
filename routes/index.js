@@ -10,6 +10,10 @@ module.exports = function (_oidc){
     res.render('index', { title: 'Partner Management Portal'});
   });
 
+  router.get('/notAuthorized', function(req, res, next) {
+    res.render('notAuthorized', { title: 'Partner Management Portal'});
+  });
+
   router.get("/logout", (req, res) => {
 
     if(req.userContext){

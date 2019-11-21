@@ -94,7 +94,12 @@ const oidc = new ExpressOIDC({
   client_secret: process.env.CLIENT_SECRET,
   redirect_uri: process.env.REDIRECT_URI,
   scope: process.env.SCOPES,
-  appBaseUrl: process.env.APP_BASE_URL
+  appBaseUrl: process.env.APP_BASE_URL,
+  routes:{
+    loginCallback: {
+      failureRedirect: '/notAuthorized'
+    },
+  }
 });
 app.use(oidc.router);
 app.use(async function (req,res,next){
