@@ -21,6 +21,7 @@ module.exports = function (_oidc){
             search = search + ' and profile.role_app2 eq "'+req.query.role_app2+'"'
         }
 
+        console.log("Finding users with parameters: "+search)
         var response = await axios.get(process.env.TENANT_URL + 
             '/api/v1/users?search=' + encodeURI(search));
         var userCollection = []
