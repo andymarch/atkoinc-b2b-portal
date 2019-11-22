@@ -28,7 +28,7 @@
 													<button type="submit" class="btn btn-primary my-4">Deactivate</button>
 												</form>
 											{{/ifCond}}
-											{{#ifCond targetUser.status '===' 'SUSPENDED'}}
+											{{#ifCond targetUser.status '===' 'DEPROVISIONED'}}
 												<form action="/users/{{targetUser.id}}/enable" method="POST">
 													<button style="display:none" class="btn-positive" type="submit">Submit</button>
 													<button type="submit" class="btn btn-primary my-4">Reactivate</button>
@@ -39,7 +39,7 @@
 												</form>
 											{{/ifCond}}
 											{{#ifCond targetUser.status '===' 'PROVISIONED'}}
-												<form action="/users/{{targetUser.id}}/delete" method="POST">
+												<form action="/users/{{targetUser.id}}/deprovisiondelete" method="POST">
 													<button style="display:none" class="btn-warning" type="submit">Submit</button>
 													<button type="submit" class="btn btn-warning my-4">Delete</button>
 												</form>
